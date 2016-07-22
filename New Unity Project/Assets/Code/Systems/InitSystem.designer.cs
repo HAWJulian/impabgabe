@@ -24,11 +24,11 @@ namespace abgabe {
         
         private IEcsComponentManagerOf<SubMenuComponent> _SubMenuComponentManager;
         
-        private IEcsComponentManagerOf<MenuComponent> _MenuComponentManager;
-        
         private IEcsComponentManagerOf<MenuItemComponent> _MenuItemComponentManager;
         
         private IEcsComponentManagerOf<MenuSelectionComponent> _MenuSelectionComponentManager;
+        
+        private IEcsComponentManagerOf<MenuComponent> _MenuComponentManager;
         
         private IEcsComponentManagerOf<SubMenuItemComponent> _SubMenuItemComponentManager;
         
@@ -36,21 +36,14 @@ namespace abgabe {
         
         private IEcsComponentManagerOf<LeftHandComponent> _LeftHandComponentManager;
         
+        private IEcsComponentManagerOf<NewGroupNode> _NewGroupNodeManager;
+        
         public IEcsComponentManagerOf<SubMenuComponent> SubMenuComponentManager {
             get {
                 return _SubMenuComponentManager;
             }
             set {
                 _SubMenuComponentManager = value;
-            }
-        }
-        
-        public IEcsComponentManagerOf<MenuComponent> MenuComponentManager {
-            get {
-                return _MenuComponentManager;
-            }
-            set {
-                _MenuComponentManager = value;
             }
         }
         
@@ -69,6 +62,15 @@ namespace abgabe {
             }
             set {
                 _MenuSelectionComponentManager = value;
+            }
+        }
+        
+        public IEcsComponentManagerOf<MenuComponent> MenuComponentManager {
+            get {
+                return _MenuComponentManager;
+            }
+            set {
+                _MenuComponentManager = value;
             }
         }
         
@@ -99,15 +101,25 @@ namespace abgabe {
             }
         }
         
+        public IEcsComponentManagerOf<NewGroupNode> NewGroupNodeManager {
+            get {
+                return _NewGroupNodeManager;
+            }
+            set {
+                _NewGroupNodeManager = value;
+            }
+        }
+        
         public override void Setup() {
             base.Setup();
             SubMenuComponentManager = ComponentSystem.RegisterComponent<SubMenuComponent>(6);
-            MenuComponentManager = ComponentSystem.RegisterComponent<MenuComponent>(4);
             MenuItemComponentManager = ComponentSystem.RegisterComponent<MenuItemComponent>(5);
             MenuSelectionComponentManager = ComponentSystem.RegisterComponent<MenuSelectionComponent>(3);
+            MenuComponentManager = ComponentSystem.RegisterComponent<MenuComponent>(4);
             SubMenuItemComponentManager = ComponentSystem.RegisterComponent<SubMenuItemComponent>(7);
             RightHandComponentManager = ComponentSystem.RegisterComponent<RightHandComponent>(2);
             LeftHandComponentManager = ComponentSystem.RegisterComponent<LeftHandComponent>(1);
+            NewGroupNodeManager = ComponentSystem.RegisterGroup<NewGroupNodeGroup,NewGroupNode>();
             this.OnEvent<uFrame.Kernel.GameReadyEvent>().Subscribe(_=>{ InitSystemGameReadyFilter(_); }).DisposeWith(this);
             this.OnEvent<uFrame.Kernel.GameReadyEvent>().Subscribe(_=>{ InitSystemGameReady2Filter(_); }).DisposeWith(this);
         }

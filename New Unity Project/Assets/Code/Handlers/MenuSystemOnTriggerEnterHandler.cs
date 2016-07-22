@@ -50,7 +50,7 @@ namespace abgabe {
         
         public virtual System.Collections.IEnumerator Execute() {
             // PublishEventNode
-            while (this.DebugInfo("d5e92b94-a972-4fd7-8581-56f4ba694c82","1f9dbb58-bffb-450a-8889-ee2a86902655", this) == 1) yield return null;
+            while (this.DebugInfo("ae44748e-b158-46a3-99d1-5b7a0b6fdc5f","1f9dbb58-bffb-450a-8889-ee2a86902655", this) == 1) yield return null;
             var PublishEventNode7_Event = new MenuSelectEvent();
             PublishEventNode7_Event.index = Collider.index;
             System.Publish(PublishEventNode7_Event);

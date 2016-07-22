@@ -24,11 +24,11 @@ namespace abgabe {
         
         private IEcsComponentManagerOf<SubMenuComponent> _SubMenuComponentManager;
         
-        private IEcsComponentManagerOf<MenuComponent> _MenuComponentManager;
-        
         private IEcsComponentManagerOf<MenuItemComponent> _MenuItemComponentManager;
         
         private IEcsComponentManagerOf<MenuSelectionComponent> _MenuSelectionComponentManager;
+        
+        private IEcsComponentManagerOf<MenuComponent> _MenuComponentManager;
         
         private IEcsComponentManagerOf<SubMenuItemComponent> _SubMenuItemComponentManager;
         
@@ -36,21 +36,14 @@ namespace abgabe {
         
         private IEcsComponentManagerOf<LeftHandComponent> _LeftHandComponentManager;
         
+        private IEcsComponentManagerOf<NewGroupNode> _NewGroupNodeManager;
+        
         public IEcsComponentManagerOf<SubMenuComponent> SubMenuComponentManager {
             get {
                 return _SubMenuComponentManager;
             }
             set {
                 _SubMenuComponentManager = value;
-            }
-        }
-        
-        public IEcsComponentManagerOf<MenuComponent> MenuComponentManager {
-            get {
-                return _MenuComponentManager;
-            }
-            set {
-                _MenuComponentManager = value;
             }
         }
         
@@ -69,6 +62,15 @@ namespace abgabe {
             }
             set {
                 _MenuSelectionComponentManager = value;
+            }
+        }
+        
+        public IEcsComponentManagerOf<MenuComponent> MenuComponentManager {
+            get {
+                return _MenuComponentManager;
+            }
+            set {
+                _MenuComponentManager = value;
             }
         }
         
@@ -99,15 +101,49 @@ namespace abgabe {
             }
         }
         
+        public IEcsComponentManagerOf<NewGroupNode> NewGroupNodeManager {
+            get {
+                return _NewGroupNodeManager;
+            }
+            set {
+                _NewGroupNodeManager = value;
+            }
+        }
+        
         public override void Setup() {
             base.Setup();
             SubMenuComponentManager = ComponentSystem.RegisterComponent<SubMenuComponent>(6);
-            MenuComponentManager = ComponentSystem.RegisterComponent<MenuComponent>(4);
             MenuItemComponentManager = ComponentSystem.RegisterComponent<MenuItemComponent>(5);
             MenuSelectionComponentManager = ComponentSystem.RegisterComponent<MenuSelectionComponent>(3);
+            MenuComponentManager = ComponentSystem.RegisterComponent<MenuComponent>(4);
             SubMenuItemComponentManager = ComponentSystem.RegisterComponent<SubMenuItemComponent>(7);
             RightHandComponentManager = ComponentSystem.RegisterComponent<RightHandComponent>(2);
             LeftHandComponentManager = ComponentSystem.RegisterComponent<LeftHandComponent>(1);
+            NewGroupNodeManager = ComponentSystem.RegisterGroup<NewGroupNodeGroup,NewGroupNode>();
+            this.OnEvent<uFrame.Kernel.GameReadyEvent>().Subscribe(_=>{ GestureSystemGameReadyFilter(_); }).DisposeWith(this);
+            this.OnEvent<abgabe.LeftPinchDetected>().Subscribe(_=>{ GestureSystemLeftPinchDetectedFilter(_); }).DisposeWith(this);
+        }
+        
+        protected virtual void GestureSystemGameReadyHandler(uFrame.Kernel.GameReadyEvent data) {
+            var handler = new GestureSystemGameReadyHandler();
+            handler.System = this;
+            handler.Event = data;
+            StartCoroutine(handler.Execute());
+        }
+        
+        protected void GestureSystemGameReadyFilter(uFrame.Kernel.GameReadyEvent data) {
+            this.GestureSystemGameReadyHandler(data);
+        }
+        
+        protected virtual void GestureSystemLeftPinchDetectedHandler(abgabe.LeftPinchDetected data) {
+            var handler = new GestureSystemLeftPinchDetectedHandler();
+            handler.System = this;
+            handler.Event = data;
+            StartCoroutine(handler.Execute());
+        }
+        
+        protected void GestureSystemLeftPinchDetectedFilter(abgabe.LeftPinchDetected data) {
+            this.GestureSystemLeftPinchDetectedHandler(data);
         }
     }
     

@@ -72,6 +72,13 @@ static
         
         #region 
 static
+        public uFrame.ECS.IEcsComponentManagerOf<NewGroupNode> NewGroupNodeManager(this uFrame.ECS.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<NewGroupNode>();
+        }
+        #endregion
+        
+        #region 
+static
         public List<SubMenuItemComponent> SubMenuItemComponentComponents(this uFrame.ECS.IEcsSystem system) {
             return system.ComponentSystem.RegisterComponent<SubMenuItemComponent>().Components;
         }
@@ -116,6 +123,13 @@ static
 static
         public List<MenuSelectionComponent> MenuSelectionComponentComponents(this uFrame.ECS.IEcsSystem system) {
             return system.ComponentSystem.RegisterComponent<MenuSelectionComponent>().Components;
+        }
+        #endregion
+        
+        #region 
+static
+        public List<NewGroupNode> NewGroupNodeComponents(this uFrame.ECS.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<NewGroupNode>().Components;
         }
         #endregion
     }

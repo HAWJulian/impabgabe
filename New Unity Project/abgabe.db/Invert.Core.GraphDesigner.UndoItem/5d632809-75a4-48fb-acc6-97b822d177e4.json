@@ -1,8 +1,0 @@
-{
-	"Identifier":"5d632809-75a4-48fb-acc6-97b822d177e4"	, 
-	"Time":"7/22/2016 2:12:45 PM"	, 
-	"Group":141245	, 
-	"DataRecordId":"14c0bd0f-8485-4939-8b91-af2136800581"	, 
-	"Type":0	, 
-	"RecordType":"Invert.Core.GraphDesigner.ConnectionData, Assembly-CSharp-Editor-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"	, 
-	"Data":"{\r\n\t\"OutputIdentifier\":\"7cd46dea-7cea-4997-916f-e21e83075fa2\"\t, \r\n\t\"InputIdentifier\":\"08579390-e659-4eaa-90ea-70fb835e82bb:obj\"\t, \r\n\t\"Identifier\":\"14c0bd0f-8485-4939-8b91-af2136800581\"}\r\n"}

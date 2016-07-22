@@ -24,6 +24,7 @@ namespace abgabe {
             system = this.AddSystem<InitSystem>();
             system = this.AddSystem<GestureSystem>();
             system = this.AddSystem<MenuSystem>();
+            system = this.AddSystem<UpdateSystem>();
         }
     }
 }
