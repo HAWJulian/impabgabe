@@ -1,0 +1,11 @@
+{
+	"CodeHandler":false	, 
+	"Custom":false	, 
+	"MetaType":"uFrame.Kernel.GameReadyEvent"	, 
+	"VariableCount":0	, 
+	"VariableName":"HandlerNode0"	, 
+	"Name":"InitSystemGameReady"	, 
+	"Order":0	, 
+	"GraphId":"2b6aa84e-2e12-4994-aca2-e52415942398"	, 
+	"Identifier":"541e1e20-d18e-4bf0-b2b8-a3a7569f9014"	, 
+	"Expanded":false}
