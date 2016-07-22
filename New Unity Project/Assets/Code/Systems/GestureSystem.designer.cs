@@ -122,6 +122,7 @@ namespace abgabe {
             NewGroupNodeManager = ComponentSystem.RegisterGroup<NewGroupNodeGroup,NewGroupNode>();
             this.OnEvent<uFrame.Kernel.GameReadyEvent>().Subscribe(_=>{ GestureSystemGameReadyFilter(_); }).DisposeWith(this);
             this.OnEvent<abgabe.LeftPinchDetected>().Subscribe(_=>{ GestureSystemLeftPinchDetectedFilter(_); }).DisposeWith(this);
+            this.OnEvent<abgabe.RightPinchDetected>().Subscribe(_=>{ GestureSystemRightPinchDetectedFilter(_); }).DisposeWith(this);
         }
         
         protected virtual void GestureSystemGameReadyHandler(uFrame.Kernel.GameReadyEvent data) {
@@ -144,6 +145,17 @@ namespace abgabe {
         
         protected void GestureSystemLeftPinchDetectedFilter(abgabe.LeftPinchDetected data) {
             this.GestureSystemLeftPinchDetectedHandler(data);
+        }
+        
+        protected virtual void GestureSystemRightPinchDetectedHandler(abgabe.RightPinchDetected data) {
+            var handler = new GestureSystemRightPinchDetectedHandler();
+            handler.System = this;
+            handler.Event = data;
+            StartCoroutine(handler.Execute());
+        }
+        
+        protected void GestureSystemRightPinchDetectedFilter(abgabe.RightPinchDetected data) {
+            this.GestureSystemRightPinchDetectedHandler(data);
         }
     }
     

@@ -50,10 +50,6 @@ namespace abgabe {
         
         private abgabe.LeftPinchDetected PublishEventNode24_Result = default( abgabe.LeftPinchDetected );
         
-        private object ActionNode34_message = default( System.Object );
-        
-        private string StringNode35 = "left";
-        
         private ComplexGesture ActionNode25_gesture = default( ComplexGesture );
         
         private bool ActionNode25_triggerLeft = default( System.Boolean );
@@ -103,7 +99,7 @@ namespace abgabe {
             ActionNode25_triggerLeft = BoolNode23;
             ActionNode25_triggerRight = BoolNode22;
             // ActionNode
-            while (this.DebugInfo("d89783ba-43e6-4309-8b5d-693a63968cd0","a79d9902-d9cb-4dc6-9fcc-05fc6d130cce", this) == 1) yield return null;
+            while (this.DebugInfo("6b09c43f-8f8a-420b-8a2a-4c4f1d372b7d","a79d9902-d9cb-4dc6-9fcc-05fc6d130cce", this) == 1) yield return null;
             // Visit ComplexGestureUtils.registerUpdatingGesture
             ComplexGestureUtils.registerUpdatingGesture(ActionNode25_gesture, ActionNode25_triggerLeft, ActionNode25_triggerRight, ()=> { System.StartCoroutine(ActionNode25_onDetect()); });
             yield break;
@@ -115,11 +111,6 @@ namespace abgabe {
             var PublishEventNode24_Event = new LeftPinchDetected();
             System.Publish(PublishEventNode24_Event);
             PublishEventNode24_Result = PublishEventNode24_Event;
-            ActionNode34_message = StringNode35;
-            // ActionNode
-            while (this.DebugInfo("6b09c43f-8f8a-420b-8a2a-4c4f1d372b7d","d89783ba-43e6-4309-8b5d-693a63968cd0", this) == 1) yield return null;
-            // Visit uFrame.Actions.DebugLibrary.LogMessage
-            uFrame.Actions.DebugLibrary.LogMessage(ActionNode34_message);
             yield break;
         }
         

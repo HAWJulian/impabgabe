@@ -124,6 +124,8 @@ namespace abgabe {
             this.OnEvent<abgabe.ShowMenuEvent>().Subscribe(_=>{ MenuSystemShowMenuEventFilter(_); }).DisposeWith(this);
             this.OnEvent<abgabe.MenuSelectEvent>().Subscribe(_=>{ MenuSystemMenuSelectEventFilter(_); }).DisposeWith(this);
             this.OnEvent<uFrame.ECS.OnTriggerEnterDispatcher>().Subscribe(_=>{ MenuSystemOnTriggerEnter2Filter(_); }).DisposeWith(this);
+            this.OnEvent<abgabe.HideMenuEvent>().Subscribe(_=>{ MenuSystemHideMenuEventFilter(_); }).DisposeWith(this);
+            this.OnEvent<abgabe.HideMenuEvent>().Subscribe(_=>{ MenuSystemHideMenuEvent2Filter(_); }).DisposeWith(this);
         }
         
         protected virtual void MenuSystemOnTriggerEnterHandler(uFrame.ECS.OnTriggerEnterDispatcher data, MenuItemComponent collider, MenuSelectionComponent source) {
@@ -218,6 +220,46 @@ namespace abgabe {
                 return;
             }
             this.MenuSystemOnTriggerEnter2Handler(data, ColliderSubMenuItemComponent, SourceMenuSelectionComponent);
+        }
+        
+        protected virtual void MenuSystemHideMenuEventHandler(abgabe.HideMenuEvent data, MenuComponent group) {
+            var handler = new MenuSystemHideMenuEventHandler();
+            handler.System = this;
+            handler.Event = data;
+            handler.Group = group;
+            StartCoroutine(handler.Execute());
+        }
+        
+        protected void MenuSystemHideMenuEventFilter(abgabe.HideMenuEvent data) {
+            var MenuComponentItems = MenuComponentManager.Components;
+            for (var MenuComponentIndex = 0
+            ; MenuComponentIndex < MenuComponentItems.Count; MenuComponentIndex++
+            ) {
+                if (!MenuComponentItems[MenuComponentIndex].Enabled) {
+                    continue;
+                }
+                this.MenuSystemHideMenuEventHandler(data, MenuComponentItems[MenuComponentIndex]);
+            }
+        }
+        
+        protected virtual void MenuSystemHideMenuEvent2Handler(abgabe.HideMenuEvent data, SubMenuComponent group) {
+            var handler = new MenuSystemHideMenuEvent2Handler();
+            handler.System = this;
+            handler.Event = data;
+            handler.Group = group;
+            StartCoroutine(handler.Execute());
+        }
+        
+        protected void MenuSystemHideMenuEvent2Filter(abgabe.HideMenuEvent data) {
+            var SubMenuComponentItems = SubMenuComponentManager.Components;
+            for (var SubMenuComponentIndex = 0
+            ; SubMenuComponentIndex < SubMenuComponentItems.Count; SubMenuComponentIndex++
+            ) {
+                if (!SubMenuComponentItems[SubMenuComponentIndex].Enabled) {
+                    continue;
+                }
+                this.MenuSystemHideMenuEvent2Handler(data, SubMenuComponentItems[SubMenuComponentIndex]);
+            }
         }
     }
     

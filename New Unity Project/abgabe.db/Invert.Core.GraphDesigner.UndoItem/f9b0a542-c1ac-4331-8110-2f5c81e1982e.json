@@ -1,0 +1,8 @@
+{
+	"Identifier":"f9b0a542-c1ac-4331-8110-2f5c81e1982e"	, 
+	"Time":"7/22/2016 2:39:40 PM"	, 
+	"Group":143940	, 
+	"DataRecordId":"a72c0dd8-6de3-4350-8402-586353b26718"	, 
+	"Type":0	, 
+	"RecordType":"Invert.uFrame.ECS.BoolNode, Assembly-CSharp-Editor-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"	, 
+	"Data":"{\r\n\t\"Value\":false\t, \r\n\t\"VariableName\":\"BoolNode43\"\t, \r\n\t\"Order\":0\t, \r\n\t\"GraphId\":\"2b6aa84e-2e12-4994-aca2-e52415942398\"\t, \r\n\t\"Identifier\":\"a72c0dd8-6de3-4350-8402-586353b26718\"\t, \r\n\t\"Expanded\":false}\r\n"}
