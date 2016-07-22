@@ -23,6 +23,13 @@ static
         
         #region 
 static
+        public uFrame.ECS.IEcsComponentManagerOf<MovableObject> MovableObjectManager(this uFrame.ECS.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<MovableObject>();
+        }
+        #endregion
+        
+        #region 
+static
         public uFrame.ECS.IEcsComponentManagerOf<SubMenuItemComponent> SubMenuItemComponentManager(this uFrame.ECS.IEcsSystem system) {
             return system.ComponentSystem.RegisterComponent<SubMenuItemComponent>();
         }
@@ -74,6 +81,13 @@ static
 static
         public uFrame.ECS.IEcsComponentManagerOf<NewGroupNode> NewGroupNodeManager(this uFrame.ECS.IEcsSystem system) {
             return system.ComponentSystem.RegisterComponent<NewGroupNode>();
+        }
+        #endregion
+        
+        #region 
+static
+        public List<MovableObject> MovableObjectComponents(this uFrame.ECS.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<MovableObject>().Components;
         }
         #endregion
         

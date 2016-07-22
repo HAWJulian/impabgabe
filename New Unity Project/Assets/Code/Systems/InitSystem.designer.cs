@@ -22,6 +22,8 @@ namespace abgabe {
     
     public partial class InitSystemBase : uFrame.ECS.EcsSystem {
         
+        private IEcsComponentManagerOf<MovableObject> _MovableObjectManager;
+        
         private IEcsComponentManagerOf<SubMenuComponent> _SubMenuComponentManager;
         
         private IEcsComponentManagerOf<MenuItemComponent> _MenuItemComponentManager;
@@ -37,6 +39,15 @@ namespace abgabe {
         private IEcsComponentManagerOf<LeftHandComponent> _LeftHandComponentManager;
         
         private IEcsComponentManagerOf<NewGroupNode> _NewGroupNodeManager;
+        
+        public IEcsComponentManagerOf<MovableObject> MovableObjectManager {
+            get {
+                return _MovableObjectManager;
+            }
+            set {
+                _MovableObjectManager = value;
+            }
+        }
         
         public IEcsComponentManagerOf<SubMenuComponent> SubMenuComponentManager {
             get {
@@ -112,6 +123,7 @@ namespace abgabe {
         
         public override void Setup() {
             base.Setup();
+            MovableObjectManager = ComponentSystem.RegisterComponent<MovableObject>(9);
             SubMenuComponentManager = ComponentSystem.RegisterComponent<SubMenuComponent>(6);
             MenuItemComponentManager = ComponentSystem.RegisterComponent<MenuItemComponent>(5);
             MenuSelectionComponentManager = ComponentSystem.RegisterComponent<MenuSelectionComponent>(3);

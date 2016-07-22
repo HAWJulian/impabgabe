@@ -26,7 +26,7 @@ namespace abgabe {
         private GameObject _msc;
         
         [UnityEngine.SerializeField()]
-        private Int32 _index;
+        private GameObject _instantiate;
         
         public GameObject msc {
             get {
@@ -37,12 +37,12 @@ namespace abgabe {
             }
         }
         
-        public Int32 index {
+        public GameObject instantiate {
             get {
-                return _index;
+                return _instantiate;
             }
             set {
-                _index = value;
+                _instantiate = value;
             }
         }
     }

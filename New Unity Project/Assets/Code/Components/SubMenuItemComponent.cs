@@ -24,11 +24,11 @@ namespace abgabe {
     public partial class SubMenuItemComponent : uFrame.ECS.EcsComponent {
         
         [UnityEngine.SerializeField()]
-        private Int32 _index;
+        private GameObject _instantiate;
         
-        private Subject<PropertyChangedEvent<Int32>> _indexObservable;
+        private Subject<PropertyChangedEvent<GameObject>> _instantiateObservable;
         
-        private PropertyChangedEvent<Int32> _indexEvent;
+        private PropertyChangedEvent<GameObject> _instantiateEvent;
         
         public override int ComponentId {
             get {
@@ -36,23 +36,23 @@ namespace abgabe {
             }
         }
         
-        public IObservable<PropertyChangedEvent<Int32>> indexObservable {
+        public IObservable<PropertyChangedEvent<GameObject>> instantiateObservable {
             get {
-                return _indexObservable ?? (_indexObservable = new Subject<PropertyChangedEvent<Int32>>());
+                return _instantiateObservable ?? (_instantiateObservable = new Subject<PropertyChangedEvent<GameObject>>());
             }
         }
         
-        public Int32 index {
+        public GameObject instantiate {
             get {
-                return _index;
+                return _instantiate;
             }
             set {
-                Setindex(value);
+                Setinstantiate(value);
             }
         }
         
-        public virtual void Setindex(Int32 value) {
-            SetProperty(ref _index, value, ref _indexEvent, _indexObservable);
+        public virtual void Setinstantiate(GameObject value) {
+            SetProperty(ref _instantiate, value, ref _instantiateEvent, _instantiateObservable);
         }
     }
 }

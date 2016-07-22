@@ -58,6 +58,26 @@ namespace abgabe {
         
         private abgabe.RightPinchDetected PublishEventNode26_Result = default( abgabe.RightPinchDetected );
         
+        private bool ActionNode51_thumb = default( System.Boolean );
+        
+        private bool BoolNode53 = true;
+        
+        private bool ActionNode51_index = default( System.Boolean );
+        
+        private bool BoolNode52 = false;
+        
+        private bool ActionNode51_middle = default( System.Boolean );
+        
+        private bool ActionNode51_fourth = default( System.Boolean );
+        
+        private bool ActionNode51_fifth = default( System.Boolean );
+        
+        private bool ActionNode51_triggerLeft = default( System.Boolean );
+        
+        private bool ActionNode51_triggerRight = default( System.Boolean );
+        
+        private abgabe.UnparentMovableObject PublishEventNode54_Result = default( abgabe.UnparentMovableObject );
+        
         public uFrame.Kernel.GameReadyEvent Event {
             get {
                 return _Event;
@@ -78,7 +98,7 @@ namespace abgabe {
         
         public virtual System.Collections.IEnumerator Execute() {
             // ActionNode
-            while (this.DebugInfo("","e48fb147-f08f-4bf9-80ab-4967c9f6793c", this) == 1) yield return null;
+            while (this.DebugInfo("e8db2df5-4b74-4d34-bee2-9720e9cec588","e48fb147-f08f-4bf9-80ab-4967c9f6793c", this) == 1) yield return null;
             // Visit ComplexGestureUtils.createComplexGesture
             ActionNode17_Result = ComplexGestureUtils.createComplexGesture();
             ActionNode18_gesture = ActionNode17_Result;
@@ -102,6 +122,17 @@ namespace abgabe {
             while (this.DebugInfo("6b09c43f-8f8a-420b-8a2a-4c4f1d372b7d","a79d9902-d9cb-4dc6-9fcc-05fc6d130cce", this) == 1) yield return null;
             // Visit ComplexGestureUtils.registerUpdatingGesture
             ComplexGestureUtils.registerUpdatingGesture(ActionNode25_gesture, ActionNode25_triggerLeft, ActionNode25_triggerRight, ()=> { System.StartCoroutine(ActionNode25_onDetect()); });
+            ActionNode51_thumb = BoolNode53;
+            ActionNode51_index = BoolNode52;
+            ActionNode51_middle = BoolNode52;
+            ActionNode51_fourth = BoolNode52;
+            ActionNode51_fifth = BoolNode52;
+            ActionNode51_triggerLeft = BoolNode53;
+            ActionNode51_triggerRight = BoolNode53;
+            // ActionNode
+            while (this.DebugInfo("463507e8-b78c-4778-b71c-70aeaf9b89a4","fde509c2-7d65-4236-affc-ac408d3c2584", this) == 1) yield return null;
+            // Visit GestureUtils.registerUpdatingGesture
+            GestureUtils.registerUpdatingGesture(ActionNode51_thumb, ActionNode51_index, ActionNode51_middle, ActionNode51_fourth, ActionNode51_fifth, ()=> { System.StartCoroutine(ActionNode51_action()); }, ActionNode51_triggerLeft, ActionNode51_triggerRight);
             yield break;
         }
         
@@ -120,6 +151,15 @@ namespace abgabe {
             var PublishEventNode26_Event = new RightPinchDetected();
             System.Publish(PublishEventNode26_Event);
             PublishEventNode26_Result = PublishEventNode26_Event;
+            yield break;
+        }
+        
+        private System.Collections.IEnumerator ActionNode51_action() {
+            // PublishEventNode
+            while (this.DebugInfo("fde509c2-7d65-4236-affc-ac408d3c2584","a38df202-1cb4-43da-b60f-f3dda82357c4", this) == 1) yield return null;
+            var PublishEventNode54_Event = new UnparentMovableObject();
+            System.Publish(PublishEventNode54_Event);
+            PublishEventNode54_Result = PublishEventNode54_Event;
             yield break;
         }
     }

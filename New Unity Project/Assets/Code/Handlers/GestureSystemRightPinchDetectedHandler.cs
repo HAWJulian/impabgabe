@@ -46,7 +46,7 @@ namespace abgabe {
         
         public virtual System.Collections.IEnumerator Execute() {
             // PublishEventNode
-            while (this.DebugInfo("7bb5713f-24e4-458d-8eee-c7d5dbc970bb","a0c6cf41-a912-4eec-9ff2-b4260ec9d793", this) == 1) yield return null;
+            while (this.DebugInfo("a38df202-1cb4-43da-b60f-f3dda82357c4","a0c6cf41-a912-4eec-9ff2-b4260ec9d793", this) == 1) yield return null;
             var PublishEventNode37_Event = new HideMenuEvent();
             System.Publish(PublishEventNode37_Event);
             PublishEventNode37_Result = PublishEventNode37_Event;

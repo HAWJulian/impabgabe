@@ -28,7 +28,9 @@ namespace abgabe {
         
         private uFrame.ECS.EcsSystem _System;
         
-        private abgabe.SubMenuSelectEvent PublishEventNode9_Result = default( abgabe.SubMenuSelectEvent );
+        private abgabe.SubMenuSelectEvent PublishEventNode44_Result = default( abgabe.SubMenuSelectEvent );
+        
+        private abgabe.HideMenuEvent PublishEventNode49_Result = default( abgabe.HideMenuEvent );
         
         public uFrame.ECS.OnTriggerEnterDispatcher Event {
             get {
@@ -50,12 +52,17 @@ namespace abgabe {
         
         public virtual System.Collections.IEnumerator Execute() {
             // PublishEventNode
-            while (this.DebugInfo("2839e6dd-e2ec-4d7a-9364-bbc4a2ca0cc0","7bb5713f-24e4-458d-8eee-c7d5dbc970bb", this) == 1) yield return null;
-            var PublishEventNode9_Event = new SubMenuSelectEvent();
-            PublishEventNode9_Event.msc = Source.gameObject;
-            PublishEventNode9_Event.index = Collider.index;
-            System.Publish(PublishEventNode9_Event);
-            PublishEventNode9_Result = PublishEventNode9_Event;
+            while (this.DebugInfo("2839e6dd-e2ec-4d7a-9364-bbc4a2ca0cc0","bc9b50b4-f7a4-4342-bf34-f93d25bffdc1", this) == 1) yield return null;
+            var PublishEventNode44_Event = new SubMenuSelectEvent();
+            PublishEventNode44_Event.msc = Source.gameObject;
+            PublishEventNode44_Event.instantiate = Collider.instantiate;
+            System.Publish(PublishEventNode44_Event);
+            PublishEventNode44_Result = PublishEventNode44_Event;
+            // PublishEventNode
+            while (this.DebugInfo("bc9b50b4-f7a4-4342-bf34-f93d25bffdc1","9b7433f5-a4f4-48e1-924a-7034e2c31302", this) == 1) yield return null;
+            var PublishEventNode49_Event = new HideMenuEvent();
+            System.Publish(PublishEventNode49_Event);
+            PublishEventNode49_Result = PublishEventNode49_Event;
             yield break;
         }
     }

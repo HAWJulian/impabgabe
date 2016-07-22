@@ -22,6 +22,8 @@ namespace abgabe {
     
     public partial class GestureSystemBase : uFrame.ECS.EcsSystem {
         
+        private IEcsComponentManagerOf<MovableObject> _MovableObjectManager;
+        
         private IEcsComponentManagerOf<SubMenuComponent> _SubMenuComponentManager;
         
         private IEcsComponentManagerOf<MenuItemComponent> _MenuItemComponentManager;
@@ -37,6 +39,15 @@ namespace abgabe {
         private IEcsComponentManagerOf<LeftHandComponent> _LeftHandComponentManager;
         
         private IEcsComponentManagerOf<NewGroupNode> _NewGroupNodeManager;
+        
+        public IEcsComponentManagerOf<MovableObject> MovableObjectManager {
+            get {
+                return _MovableObjectManager;
+            }
+            set {
+                _MovableObjectManager = value;
+            }
+        }
         
         public IEcsComponentManagerOf<SubMenuComponent> SubMenuComponentManager {
             get {
@@ -112,6 +123,7 @@ namespace abgabe {
         
         public override void Setup() {
             base.Setup();
+            MovableObjectManager = ComponentSystem.RegisterComponent<MovableObject>(9);
             SubMenuComponentManager = ComponentSystem.RegisterComponent<SubMenuComponent>(6);
             MenuItemComponentManager = ComponentSystem.RegisterComponent<MenuItemComponent>(5);
             MenuSelectionComponentManager = ComponentSystem.RegisterComponent<MenuSelectionComponent>(3);
@@ -121,8 +133,9 @@ namespace abgabe {
             LeftHandComponentManager = ComponentSystem.RegisterComponent<LeftHandComponent>(1);
             NewGroupNodeManager = ComponentSystem.RegisterGroup<NewGroupNodeGroup,NewGroupNode>();
             this.OnEvent<uFrame.Kernel.GameReadyEvent>().Subscribe(_=>{ GestureSystemGameReadyFilter(_); }).DisposeWith(this);
-            this.OnEvent<abgabe.LeftPinchDetected>().Subscribe(_=>{ GestureSystemLeftPinchDetectedFilter(_); }).DisposeWith(this);
+            this.OnEvent<abgabe.UnparentMovableObject>().Subscribe(_=>{ GestureSystemUnparentMovableObjectFilter(_); }).DisposeWith(this);
             this.OnEvent<abgabe.RightPinchDetected>().Subscribe(_=>{ GestureSystemRightPinchDetectedFilter(_); }).DisposeWith(this);
+            this.OnEvent<abgabe.LeftPinchDetected>().Subscribe(_=>{ GestureSystemLeftPinchDetectedFilter(_); }).DisposeWith(this);
         }
         
         protected virtual void GestureSystemGameReadyHandler(uFrame.Kernel.GameReadyEvent data) {
@@ -136,15 +149,24 @@ namespace abgabe {
             this.GestureSystemGameReadyHandler(data);
         }
         
-        protected virtual void GestureSystemLeftPinchDetectedHandler(abgabe.LeftPinchDetected data) {
-            var handler = new GestureSystemLeftPinchDetectedHandler();
+        protected virtual void GestureSystemUnparentMovableObjectHandler(abgabe.UnparentMovableObject data, MovableObject group) {
+            var handler = new GestureSystemUnparentMovableObjectHandler();
             handler.System = this;
             handler.Event = data;
+            handler.Group = group;
             StartCoroutine(handler.Execute());
         }
         
-        protected void GestureSystemLeftPinchDetectedFilter(abgabe.LeftPinchDetected data) {
-            this.GestureSystemLeftPinchDetectedHandler(data);
+        protected void GestureSystemUnparentMovableObjectFilter(abgabe.UnparentMovableObject data) {
+            var MovableObjectItems = MovableObjectManager.Components;
+            for (var MovableObjectIndex = 0
+            ; MovableObjectIndex < MovableObjectItems.Count; MovableObjectIndex++
+            ) {
+                if (!MovableObjectItems[MovableObjectIndex].Enabled) {
+                    continue;
+                }
+                this.GestureSystemUnparentMovableObjectHandler(data, MovableObjectItems[MovableObjectIndex]);
+            }
         }
         
         protected virtual void GestureSystemRightPinchDetectedHandler(abgabe.RightPinchDetected data) {
@@ -156,6 +178,17 @@ namespace abgabe {
         
         protected void GestureSystemRightPinchDetectedFilter(abgabe.RightPinchDetected data) {
             this.GestureSystemRightPinchDetectedHandler(data);
+        }
+        
+        protected virtual void GestureSystemLeftPinchDetectedHandler(abgabe.LeftPinchDetected data) {
+            var handler = new GestureSystemLeftPinchDetectedHandler();
+            handler.System = this;
+            handler.Event = data;
+            StartCoroutine(handler.Execute());
+        }
+        
+        protected void GestureSystemLeftPinchDetectedFilter(abgabe.LeftPinchDetected data) {
+            this.GestureSystemLeftPinchDetectedHandler(data);
         }
     }
     

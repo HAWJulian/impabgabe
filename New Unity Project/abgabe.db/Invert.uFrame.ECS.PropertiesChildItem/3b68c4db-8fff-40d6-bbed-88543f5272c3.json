@@ -1,7 +1,7 @@
 {
 	"FriendlyName":"index"	, 
-	"RelatedType":""	, 
+	"RelatedType":"UnityEngine.GameObject"	, 
 	"Identifier":"3b68c4db-8fff-40d6-bbed-88543f5272c3"	, 
 	"NodeId":"6e778f73-1850-4090-93ae-c804b04f535c"	, 
 	"Order":0	, 
-	"Name":"index"}
+	"Name":"instantiate"}
