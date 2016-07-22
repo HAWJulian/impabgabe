@@ -1,0 +1,11 @@
+{
+	"CodeHandler":false	, 
+	"Custom":false	, 
+	"MetaType":"uFrame.ECS.OnTriggerEnterDispatcher"	, 
+	"VariableCount":0	, 
+	"VariableName":"HandlerNode69"	, 
+	"Name":"ModifyObjectSystemOnTriggerEnter"	, 
+	"Order":0	, 
+	"GraphId":"2b6aa84e-2e12-4994-aca2-e52415942398"	, 
+	"Identifier":"debc678c-6a02-4798-aa60-dc3aeed37ffd"	, 
+	"Expanded":false}

@@ -44,6 +44,8 @@ namespace abgabe {
         
         private UnityEngine.Vector3 Vector3Node67 = new UnityEngine.Vector3(0f,0f,0f);
         
+        private bool BoolNode71 = true;
+        
         public abgabe.UnparentMovableObject Event {
             get {
                 return _Event;
@@ -82,6 +84,9 @@ namespace abgabe {
             while (this.DebugInfo("d90d1ba3-2a6b-480d-9ec4-e988c618c308","740e42b9-8f47-4950-883c-9e539088c4fb", this) == 1) yield return null;
             // Visit uFrame.Actions.EntityTransform.SetRotation
             uFrame.Actions.EntityTransform.SetRotation(ActionNode68_entity, ActionNode68_rotation);
+            // SetVariableNode
+            while (this.DebugInfo("740e42b9-8f47-4950-883c-9e539088c4fb","5d36b5f4-52a1-49d8-96a8-e3b96a89f30e", this) == 1) yield return null;
+            Group.isPlaced = (System.Boolean)BoolNode71;
             yield break;
         }
     }

@@ -23,10 +23,36 @@ namespace abgabe {
     [uFrame.Attributes.uFrameIdentifier("0d6d6dfa-6b81-48a0-bdb0-4c7c19b03f28")]
     public partial class MovableObject : uFrame.ECS.EcsComponent {
         
+        [UnityEngine.SerializeField()]
+        private Boolean _isPlaced;
+        
+        private Subject<PropertyChangedEvent<Boolean>> _isPlacedObservable;
+        
+        private PropertyChangedEvent<Boolean> _isPlacedEvent;
+        
         public override int ComponentId {
             get {
                 return 9;
             }
+        }
+        
+        public IObservable<PropertyChangedEvent<Boolean>> isPlacedObservable {
+            get {
+                return _isPlacedObservable ?? (_isPlacedObservable = new Subject<PropertyChangedEvent<Boolean>>());
+            }
+        }
+        
+        public Boolean isPlaced {
+            get {
+                return _isPlaced;
+            }
+            set {
+                SetisPlaced(value);
+            }
+        }
+        
+        public virtual void SetisPlaced(Boolean value) {
+            SetProperty(ref _isPlaced, value, ref _isPlacedEvent, _isPlacedObservable);
         }
     }
 }

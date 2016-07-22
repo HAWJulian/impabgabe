@@ -17,15 +17,11 @@ namespace abgabe {
     using uFrame.Kernel;
     
     
-    public partial class abgabeLoader : uFrame.Kernel.SystemLoader {
+    [uFrame.Attributes.uFrameIdentifier("d07a357a-7cd9-4d86-8cd5-bd0002b6b628")]
+    public partial class ModifyObjectSystemLoader : uFrame.Kernel.SystemLoader {
         
         public override void Load() {
-            EcsSystem system = null;
-            system = this.AddSystem<InitSystem>();
-            system = this.AddSystem<GestureSystem>();
-            system = this.AddSystem<MenuSystem>();
-            system = this.AddSystem<UpdateSystem>();
-            system = this.AddSystem<ModifyObjectSystem>();
+            this.AddSystem<ModifyObjectSystem>();
         }
     }
 }
