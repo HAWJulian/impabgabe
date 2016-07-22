@@ -1,8 +1,0 @@
-{
-	"Identifier":"49aae14b-4078-429a-a9f9-ec5186841198"	, 
-	"Time":"7/22/2016 3:12:51 PM"	, 
-	"Group":151251	, 
-	"DataRecordId":"935dcd23-6cbb-4fb4-a0f1-b451643e0fda"	, 
-	"Type":0	, 
-	"RecordType":"Invert.uFrame.ECS.ActionNode, Assembly-CSharp-Editor-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"	, 
-	"Data":"{\r\n\t\"MetaType\":\"ComplexGestureUtils.update\"\t, \r\n\t\"VariableName\":\"ActionNode58\"\t, \r\n\t\"Order\":0\t, \r\n\t\"GraphId\":\"2b6aa84e-2e12-4994-aca2-e52415942398\"\t, \r\n\t\"Identifier\":\"935dcd23-6cbb-4fb4-a0f1-b451643e0fda\"\t, \r\n\t\"Expanded\":false}\r\n"}

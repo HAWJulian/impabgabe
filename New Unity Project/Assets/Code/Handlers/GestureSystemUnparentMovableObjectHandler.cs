@@ -28,6 +28,22 @@ namespace abgabe {
         
         private object NullNode57;
         
+        private float ActionNode63_x = default( System.Single );
+        
+        private float ActionNode63_y = default( System.Single );
+        
+        private float ActionNode63_z = default( System.Single );
+        
+        private float FloatNode64 = 0.35F;
+        
+        private UnityEngine.Vector3 ActionNode63_Result = default( UnityEngine.Vector3 );
+        
+        private uFrame.ECS.Entity ActionNode68_entity = default( uFrame.ECS.Entity );
+        
+        private UnityEngine.Vector3 ActionNode68_rotation = default( UnityEngine.Vector3 );
+        
+        private UnityEngine.Vector3 Vector3Node67 = new UnityEngine.Vector3(0f,0f,0f);
+        
         public abgabe.UnparentMovableObject Event {
             get {
                 return _Event;
@@ -50,6 +66,22 @@ namespace abgabe {
             // SetVariableNode
             while (this.DebugInfo("","e8db2df5-4b74-4d34-bee2-9720e9cec588", this) == 1) yield return null;
             Group.gameObject.transform.parent = (UnityEngine.Transform)NullNode57;
+            ActionNode63_x = Group.gameObject.transform.position.x;
+            ActionNode63_y = Group.gameObject.transform.position.y;
+            ActionNode63_z = FloatNode64;
+            // ActionNode
+            while (this.DebugInfo("e8db2df5-4b74-4d34-bee2-9720e9cec588","7b087719-0392-408f-88c7-4f6f8281fa8c", this) == 1) yield return null;
+            // Visit uFrame.Actions.Vector3Library.Create
+            ActionNode63_Result = uFrame.Actions.Vector3Library.Create(ActionNode63_x, ActionNode63_y, ActionNode63_z);
+            // SetVariableNode
+            while (this.DebugInfo("7b087719-0392-408f-88c7-4f6f8281fa8c","d90d1ba3-2a6b-480d-9ec4-e988c618c308", this) == 1) yield return null;
+            Group.gameObject.transform.position = (UnityEngine.Vector3)ActionNode63_Result;
+            ActionNode68_entity = Group._Entity;
+            ActionNode68_rotation = Vector3Node67;
+            // ActionNode
+            while (this.DebugInfo("d90d1ba3-2a6b-480d-9ec4-e988c618c308","740e42b9-8f47-4950-883c-9e539088c4fb", this) == 1) yield return null;
+            // Visit uFrame.Actions.EntityTransform.SetRotation
+            uFrame.Actions.EntityTransform.SetRotation(ActionNode68_entity, ActionNode68_rotation);
             yield break;
         }
     }
