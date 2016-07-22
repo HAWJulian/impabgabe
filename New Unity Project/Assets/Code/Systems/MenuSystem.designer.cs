@@ -26,15 +26,15 @@ namespace abgabe {
         
         private IEcsComponentManagerOf<MenuComponent> _MenuComponentManager;
         
-        private IEcsComponentManagerOf<LeftHandComponent> _LeftHandComponentManager;
-        
-        private IEcsComponentManagerOf<RightHandComponent> _RightHandComponentManager;
+        private IEcsComponentManagerOf<MenuItemComponent> _MenuItemComponentManager;
         
         private IEcsComponentManagerOf<MenuSelectionComponent> _MenuSelectionComponentManager;
         
-        private IEcsComponentManagerOf<MenuItemComponent> _MenuItemComponentManager;
-        
         private IEcsComponentManagerOf<SubMenuItemComponent> _SubMenuItemComponentManager;
+        
+        private IEcsComponentManagerOf<RightHandComponent> _RightHandComponentManager;
+        
+        private IEcsComponentManagerOf<LeftHandComponent> _LeftHandComponentManager;
         
         public IEcsComponentManagerOf<SubMenuComponent> SubMenuComponentManager {
             get {
@@ -54,21 +54,12 @@ namespace abgabe {
             }
         }
         
-        public IEcsComponentManagerOf<LeftHandComponent> LeftHandComponentManager {
+        public IEcsComponentManagerOf<MenuItemComponent> MenuItemComponentManager {
             get {
-                return _LeftHandComponentManager;
+                return _MenuItemComponentManager;
             }
             set {
-                _LeftHandComponentManager = value;
-            }
-        }
-        
-        public IEcsComponentManagerOf<RightHandComponent> RightHandComponentManager {
-            get {
-                return _RightHandComponentManager;
-            }
-            set {
-                _RightHandComponentManager = value;
+                _MenuItemComponentManager = value;
             }
         }
         
@@ -81,15 +72,6 @@ namespace abgabe {
             }
         }
         
-        public IEcsComponentManagerOf<MenuItemComponent> MenuItemComponentManager {
-            get {
-                return _MenuItemComponentManager;
-            }
-            set {
-                _MenuItemComponentManager = value;
-            }
-        }
-        
         public IEcsComponentManagerOf<SubMenuItemComponent> SubMenuItemComponentManager {
             get {
                 return _SubMenuItemComponentManager;
@@ -99,15 +81,110 @@ namespace abgabe {
             }
         }
         
+        public IEcsComponentManagerOf<RightHandComponent> RightHandComponentManager {
+            get {
+                return _RightHandComponentManager;
+            }
+            set {
+                _RightHandComponentManager = value;
+            }
+        }
+        
+        public IEcsComponentManagerOf<LeftHandComponent> LeftHandComponentManager {
+            get {
+                return _LeftHandComponentManager;
+            }
+            set {
+                _LeftHandComponentManager = value;
+            }
+        }
+        
         public override void Setup() {
             base.Setup();
             SubMenuComponentManager = ComponentSystem.RegisterComponent<SubMenuComponent>(6);
             MenuComponentManager = ComponentSystem.RegisterComponent<MenuComponent>(4);
-            LeftHandComponentManager = ComponentSystem.RegisterComponent<LeftHandComponent>(1);
-            RightHandComponentManager = ComponentSystem.RegisterComponent<RightHandComponent>(2);
-            MenuSelectionComponentManager = ComponentSystem.RegisterComponent<MenuSelectionComponent>(3);
             MenuItemComponentManager = ComponentSystem.RegisterComponent<MenuItemComponent>(5);
+            MenuSelectionComponentManager = ComponentSystem.RegisterComponent<MenuSelectionComponent>(3);
             SubMenuItemComponentManager = ComponentSystem.RegisterComponent<SubMenuItemComponent>(7);
+            RightHandComponentManager = ComponentSystem.RegisterComponent<RightHandComponent>(2);
+            LeftHandComponentManager = ComponentSystem.RegisterComponent<LeftHandComponent>(1);
+            this.OnEvent<uFrame.ECS.OnTriggerEnterDispatcher>().Subscribe(_=>{ MenuSystemOnTriggerEnterFilter(_); }).DisposeWith(this);
+            this.OnEvent<uFrame.ECS.OnTriggerEnterDispatcher>().Subscribe(_=>{ MenuSystemOnTriggerEnter2Filter(_); }).DisposeWith(this);
+            this.OnEvent<abgabe.MenuSelectEvent>().Subscribe(_=>{ MenuSystemMenuSelectEventFilter(_); }).DisposeWith(this);
+        }
+        
+        protected virtual void MenuSystemOnTriggerEnterHandler(uFrame.ECS.OnTriggerEnterDispatcher data, MenuItemComponent collider, MenuSelectionComponent source) {
+            var handler = new MenuSystemOnTriggerEnterHandler();
+            handler.System = this;
+            handler.Event = data;
+            handler.Collider = collider;
+            handler.Source = source;
+            StartCoroutine(handler.Execute());
+        }
+        
+        protected void MenuSystemOnTriggerEnterFilter(uFrame.ECS.OnTriggerEnterDispatcher data) {
+            var ColliderMenuItemComponent = MenuItemComponentManager[data.ColliderId];
+            if (ColliderMenuItemComponent == null) {
+                return;
+            }
+            if (!ColliderMenuItemComponent.Enabled) {
+                return;
+            }
+            var SourceMenuSelectionComponent = MenuSelectionComponentManager[data.EntityId];
+            if (SourceMenuSelectionComponent == null) {
+                return;
+            }
+            if (!SourceMenuSelectionComponent.Enabled) {
+                return;
+            }
+            this.MenuSystemOnTriggerEnterHandler(data, ColliderMenuItemComponent, SourceMenuSelectionComponent);
+        }
+        
+        protected virtual void MenuSystemOnTriggerEnter2Handler(uFrame.ECS.OnTriggerEnterDispatcher data, SubMenuItemComponent collider, MenuSelectionComponent source) {
+            var handler = new MenuSystemOnTriggerEnter2Handler();
+            handler.System = this;
+            handler.Event = data;
+            handler.Collider = collider;
+            handler.Source = source;
+            StartCoroutine(handler.Execute());
+        }
+        
+        protected void MenuSystemOnTriggerEnter2Filter(uFrame.ECS.OnTriggerEnterDispatcher data) {
+            var ColliderSubMenuItemComponent = SubMenuItemComponentManager[data.ColliderId];
+            if (ColliderSubMenuItemComponent == null) {
+                return;
+            }
+            if (!ColliderSubMenuItemComponent.Enabled) {
+                return;
+            }
+            var SourceMenuSelectionComponent = MenuSelectionComponentManager[data.EntityId];
+            if (SourceMenuSelectionComponent == null) {
+                return;
+            }
+            if (!SourceMenuSelectionComponent.Enabled) {
+                return;
+            }
+            this.MenuSystemOnTriggerEnter2Handler(data, ColliderSubMenuItemComponent, SourceMenuSelectionComponent);
+        }
+        
+        protected virtual void MenuSystemMenuSelectEventHandler(abgabe.MenuSelectEvent data, SubMenuComponent group) {
+            var handler = new MenuSystemMenuSelectEventHandler();
+            handler.System = this;
+            handler.Event = data;
+            handler.Group = group;
+            StartCoroutine(handler.Execute());
+        }
+        
+        protected void MenuSystemMenuSelectEventFilter(abgabe.MenuSelectEvent data) {
+            var SubMenuComponentItems = SubMenuComponentManager.Components;
+            for (var SubMenuComponentIndex = 0
+            ; SubMenuComponentIndex < SubMenuComponentItems.Count; SubMenuComponentIndex++
+            ) {
+                if (!SubMenuComponentItems[SubMenuComponentIndex].Enabled) {
+                    continue;
+                }
+                this.MenuSystemMenuSelectEventHandler(data, SubMenuComponentItems[SubMenuComponentIndex]);
+            }
         }
     }
     

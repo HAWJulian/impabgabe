@@ -23,19 +23,10 @@ namespace abgabe {
     public partial class SubMenuSelectEvent : object {
         
         [UnityEngine.SerializeField()]
-        private Int32 _index;
-        
-        [UnityEngine.SerializeField()]
         private GameObject _msc;
         
-        public Int32 index {
-            get {
-                return _index;
-            }
-            set {
-                _index = value;
-            }
-        }
+        [UnityEngine.SerializeField()]
+        private Int32 _index;
         
         public GameObject msc {
             get {
@@ -43,6 +34,15 @@ namespace abgabe {
             }
             set {
                 _msc = value;
+            }
+        }
+        
+        public Int32 index {
+            get {
+                return _index;
+            }
+            set {
+                _index = value;
             }
         }
     }

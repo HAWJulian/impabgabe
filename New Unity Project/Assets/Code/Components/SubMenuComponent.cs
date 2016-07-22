@@ -23,10 +23,36 @@ namespace abgabe {
     [uFrame.Attributes.uFrameIdentifier("ae2092da-a4fb-4deb-a9ae-a4406d3ecac5")]
     public partial class SubMenuComponent : uFrame.ECS.EcsComponent {
         
+        [UnityEngine.SerializeField()]
+        private Int32 _index;
+        
+        private Subject<PropertyChangedEvent<Int32>> _indexObservable;
+        
+        private PropertyChangedEvent<Int32> _indexEvent;
+        
         public override int ComponentId {
             get {
                 return 6;
             }
+        }
+        
+        public IObservable<PropertyChangedEvent<Int32>> indexObservable {
+            get {
+                return _indexObservable ?? (_indexObservable = new Subject<PropertyChangedEvent<Int32>>());
+            }
+        }
+        
+        public Int32 index {
+            get {
+                return _index;
+            }
+            set {
+                Setindex(value);
+            }
+        }
+        
+        public virtual void Setindex(Int32 value) {
+            SetProperty(ref _index, value, ref _indexEvent, _indexObservable);
         }
     }
 }

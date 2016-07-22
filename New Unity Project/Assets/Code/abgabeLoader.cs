@@ -22,8 +22,8 @@ namespace abgabe {
         public override void Load() {
             EcsSystem system = null;
             system = this.AddSystem<InitSystem>();
-            system = this.AddSystem<MenuSystem>();
             system = this.AddSystem<GestureSystem>();
+            system = this.AddSystem<MenuSystem>();
         }
     }
 }

@@ -26,15 +26,15 @@ namespace abgabe {
         
         private IEcsComponentManagerOf<MenuComponent> _MenuComponentManager;
         
-        private IEcsComponentManagerOf<LeftHandComponent> _LeftHandComponentManager;
-        
-        private IEcsComponentManagerOf<RightHandComponent> _RightHandComponentManager;
+        private IEcsComponentManagerOf<MenuItemComponent> _MenuItemComponentManager;
         
         private IEcsComponentManagerOf<MenuSelectionComponent> _MenuSelectionComponentManager;
         
-        private IEcsComponentManagerOf<MenuItemComponent> _MenuItemComponentManager;
-        
         private IEcsComponentManagerOf<SubMenuItemComponent> _SubMenuItemComponentManager;
+        
+        private IEcsComponentManagerOf<RightHandComponent> _RightHandComponentManager;
+        
+        private IEcsComponentManagerOf<LeftHandComponent> _LeftHandComponentManager;
         
         public IEcsComponentManagerOf<SubMenuComponent> SubMenuComponentManager {
             get {
@@ -54,21 +54,12 @@ namespace abgabe {
             }
         }
         
-        public IEcsComponentManagerOf<LeftHandComponent> LeftHandComponentManager {
+        public IEcsComponentManagerOf<MenuItemComponent> MenuItemComponentManager {
             get {
-                return _LeftHandComponentManager;
+                return _MenuItemComponentManager;
             }
             set {
-                _LeftHandComponentManager = value;
-            }
-        }
-        
-        public IEcsComponentManagerOf<RightHandComponent> RightHandComponentManager {
-            get {
-                return _RightHandComponentManager;
-            }
-            set {
-                _RightHandComponentManager = value;
+                _MenuItemComponentManager = value;
             }
         }
         
@@ -81,15 +72,6 @@ namespace abgabe {
             }
         }
         
-        public IEcsComponentManagerOf<MenuItemComponent> MenuItemComponentManager {
-            get {
-                return _MenuItemComponentManager;
-            }
-            set {
-                _MenuItemComponentManager = value;
-            }
-        }
-        
         public IEcsComponentManagerOf<SubMenuItemComponent> SubMenuItemComponentManager {
             get {
                 return _SubMenuItemComponentManager;
@@ -99,15 +81,33 @@ namespace abgabe {
             }
         }
         
+        public IEcsComponentManagerOf<RightHandComponent> RightHandComponentManager {
+            get {
+                return _RightHandComponentManager;
+            }
+            set {
+                _RightHandComponentManager = value;
+            }
+        }
+        
+        public IEcsComponentManagerOf<LeftHandComponent> LeftHandComponentManager {
+            get {
+                return _LeftHandComponentManager;
+            }
+            set {
+                _LeftHandComponentManager = value;
+            }
+        }
+        
         public override void Setup() {
             base.Setup();
             SubMenuComponentManager = ComponentSystem.RegisterComponent<SubMenuComponent>(6);
             MenuComponentManager = ComponentSystem.RegisterComponent<MenuComponent>(4);
-            LeftHandComponentManager = ComponentSystem.RegisterComponent<LeftHandComponent>(1);
-            RightHandComponentManager = ComponentSystem.RegisterComponent<RightHandComponent>(2);
-            MenuSelectionComponentManager = ComponentSystem.RegisterComponent<MenuSelectionComponent>(3);
             MenuItemComponentManager = ComponentSystem.RegisterComponent<MenuItemComponent>(5);
+            MenuSelectionComponentManager = ComponentSystem.RegisterComponent<MenuSelectionComponent>(3);
             SubMenuItemComponentManager = ComponentSystem.RegisterComponent<SubMenuItemComponent>(7);
+            RightHandComponentManager = ComponentSystem.RegisterComponent<RightHandComponent>(2);
+            LeftHandComponentManager = ComponentSystem.RegisterComponent<LeftHandComponent>(1);
         }
     }
     

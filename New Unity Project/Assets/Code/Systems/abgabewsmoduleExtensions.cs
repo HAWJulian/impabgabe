@@ -23,22 +23,8 @@ static
         
         #region 
 static
-        public uFrame.ECS.IEcsComponentManagerOf<LeftHandComponent> LeftHandComponentManager(this uFrame.ECS.IEcsSystem system) {
-            return system.ComponentSystem.RegisterComponent<LeftHandComponent>();
-        }
-        #endregion
-        
-        #region 
-static
-        public uFrame.ECS.IEcsComponentManagerOf<RightHandComponent> RightHandComponentManager(this uFrame.ECS.IEcsSystem system) {
-            return system.ComponentSystem.RegisterComponent<RightHandComponent>();
-        }
-        #endregion
-        
-        #region 
-static
-        public uFrame.ECS.IEcsComponentManagerOf<MenuSelectionComponent> MenuSelectionComponentManager(this uFrame.ECS.IEcsSystem system) {
-            return system.ComponentSystem.RegisterComponent<MenuSelectionComponent>();
+        public uFrame.ECS.IEcsComponentManagerOf<SubMenuItemComponent> SubMenuItemComponentManager(this uFrame.ECS.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<SubMenuItemComponent>();
         }
         #endregion
         
@@ -51,8 +37,15 @@ static
         
         #region 
 static
-        public uFrame.ECS.IEcsComponentManagerOf<MenuItemComponent> MenuItemComponentManager(this uFrame.ECS.IEcsSystem system) {
-            return system.ComponentSystem.RegisterComponent<MenuItemComponent>();
+        public uFrame.ECS.IEcsComponentManagerOf<RightHandComponent> RightHandComponentManager(this uFrame.ECS.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<RightHandComponent>();
+        }
+        #endregion
+        
+        #region 
+static
+        public uFrame.ECS.IEcsComponentManagerOf<LeftHandComponent> LeftHandComponentManager(this uFrame.ECS.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<LeftHandComponent>();
         }
         #endregion
         
@@ -65,29 +58,22 @@ static
         
         #region 
 static
-        public uFrame.ECS.IEcsComponentManagerOf<SubMenuItemComponent> SubMenuItemComponentManager(this uFrame.ECS.IEcsSystem system) {
-            return system.ComponentSystem.RegisterComponent<SubMenuItemComponent>();
+        public uFrame.ECS.IEcsComponentManagerOf<MenuItemComponent> MenuItemComponentManager(this uFrame.ECS.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<MenuItemComponent>();
         }
         #endregion
         
         #region 
 static
-        public List<LeftHandComponent> LeftHandComponentComponents(this uFrame.ECS.IEcsSystem system) {
-            return system.ComponentSystem.RegisterComponent<LeftHandComponent>().Components;
+        public uFrame.ECS.IEcsComponentManagerOf<MenuSelectionComponent> MenuSelectionComponentManager(this uFrame.ECS.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<MenuSelectionComponent>();
         }
         #endregion
         
         #region 
 static
-        public List<RightHandComponent> RightHandComponentComponents(this uFrame.ECS.IEcsSystem system) {
-            return system.ComponentSystem.RegisterComponent<RightHandComponent>().Components;
-        }
-        #endregion
-        
-        #region 
-static
-        public List<MenuSelectionComponent> MenuSelectionComponentComponents(this uFrame.ECS.IEcsSystem system) {
-            return system.ComponentSystem.RegisterComponent<MenuSelectionComponent>().Components;
+        public List<SubMenuItemComponent> SubMenuItemComponentComponents(this uFrame.ECS.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<SubMenuItemComponent>().Components;
         }
         #endregion
         
@@ -100,8 +86,15 @@ static
         
         #region 
 static
-        public List<MenuItemComponent> MenuItemComponentComponents(this uFrame.ECS.IEcsSystem system) {
-            return system.ComponentSystem.RegisterComponent<MenuItemComponent>().Components;
+        public List<RightHandComponent> RightHandComponentComponents(this uFrame.ECS.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<RightHandComponent>().Components;
+        }
+        #endregion
+        
+        #region 
+static
+        public List<LeftHandComponent> LeftHandComponentComponents(this uFrame.ECS.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<LeftHandComponent>().Components;
         }
         #endregion
         
@@ -114,8 +107,15 @@ static
         
         #region 
 static
-        public List<SubMenuItemComponent> SubMenuItemComponentComponents(this uFrame.ECS.IEcsSystem system) {
-            return system.ComponentSystem.RegisterComponent<SubMenuItemComponent>().Components;
+        public List<MenuItemComponent> MenuItemComponentComponents(this uFrame.ECS.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<MenuItemComponent>().Components;
+        }
+        #endregion
+        
+        #region 
+static
+        public List<MenuSelectionComponent> MenuSelectionComponentComponents(this uFrame.ECS.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<MenuSelectionComponent>().Components;
         }
         #endregion
     }

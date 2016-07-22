@@ -1,0 +1,8 @@
+{
+	"Identifier":"1b5aed02-143e-46dc-a9b2-f8411fa60292"	, 
+	"Time":"7/22/2016 2:12:39 PM"	, 
+	"Group":141239	, 
+	"DataRecordId":"baf557ee-f8c5-4aa8-b4bf-93677fa0c23f"	, 
+	"Type":0	, 
+	"RecordType":"Invert.Core.GraphDesigner.ConnectionData, Assembly-CSharp-Editor-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"	, 
+	"Data":"{\r\n\t\"OutputIdentifier\":\"ae2092da-a4fb-4deb-a9ae-a4406d3ecac5:Group.gameObject\"\t, \r\n\t\"InputIdentifier\":\"7cd46dea-7cea-4997-916f-e21e83075fa2:Property\"\t, \r\n\t\"Identifier\":\"baf557ee-f8c5-4aa8-b4bf-93677fa0c23f\"}\r\n"}
