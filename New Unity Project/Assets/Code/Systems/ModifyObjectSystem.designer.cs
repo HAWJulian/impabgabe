@@ -136,6 +136,12 @@ namespace abgabe {
         }
         
         protected virtual void ModifyObjectSystemOnTriggerEnterHandler(uFrame.ECS.OnTriggerEnterDispatcher data, MenuSelectionComponent collider, MovableObject source) {
+            var handler = new ModifyObjectSystemOnTriggerEnterHandler();
+            handler.System = this;
+            handler.Event = data;
+            handler.Collider = collider;
+            handler.Source = source;
+            StartCoroutine(handler.Execute());
         }
         
         protected void ModifyObjectSystemOnTriggerEnterFilter(uFrame.ECS.OnTriggerEnterDispatcher data) {

@@ -23,9 +23,9 @@ namespace abgabe {
             EcsSystem system = null;
             system = this.AddSystem<InitSystem>();
             system = this.AddSystem<GestureSystem>();
+            system = this.AddSystem<ModifyObjectSystem>();
             system = this.AddSystem<MenuSystem>();
             system = this.AddSystem<UpdateSystem>();
-            system = this.AddSystem<ModifyObjectSystem>();
         }
     }
 }

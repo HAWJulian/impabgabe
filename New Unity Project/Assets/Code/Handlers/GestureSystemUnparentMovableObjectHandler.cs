@@ -26,6 +26,8 @@ namespace abgabe {
         
         private uFrame.ECS.EcsSystem _System;
         
+        private bool ActionNode72_value = default( System.Boolean );
+        
         private object NullNode57;
         
         private float ActionNode63_x = default( System.Single );
@@ -65,8 +67,21 @@ namespace abgabe {
         }
         
         public virtual System.Collections.IEnumerator Execute() {
+            ActionNode72_value = Group.isPlaced;
+            // ActionNode
+            while (this.DebugInfo("","5bb81a4a-b267-4d9a-8a48-2a34f07081dc", this) == 1) yield return null;
+            // Visit uFrame.Actions.Comparisons.IsTrue
+            uFrame.Actions.Comparisons.IsTrue(ActionNode72_value, ()=> { System.StartCoroutine(ActionNode72_yes()); }, ()=> { System.StartCoroutine(ActionNode72_no()); });
+            yield break;
+        }
+        
+        private System.Collections.IEnumerator ActionNode72_yes() {
+            yield break;
+        }
+        
+        private System.Collections.IEnumerator ActionNode72_no() {
             // SetVariableNode
-            while (this.DebugInfo("","e8db2df5-4b74-4d34-bee2-9720e9cec588", this) == 1) yield return null;
+            while (this.DebugInfo("5bb81a4a-b267-4d9a-8a48-2a34f07081dc","e8db2df5-4b74-4d34-bee2-9720e9cec588", this) == 1) yield return null;
             Group.gameObject.transform.parent = (UnityEngine.Transform)NullNode57;
             ActionNode63_x = Group.gameObject.transform.position.x;
             ActionNode63_y = Group.gameObject.transform.position.y;
