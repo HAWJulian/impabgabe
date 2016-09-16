@@ -24,7 +24,14 @@ namespace abgabe {
     public partial class MovableObject : uFrame.ECS.EcsComponent {
         
         [UnityEngine.SerializeField()]
+        private Int32 _rotation;
+        
+        [UnityEngine.SerializeField()]
         private Boolean _isPlaced;
+        
+        private Subject<PropertyChangedEvent<Int32>> _rotationObservable;
+        
+        private PropertyChangedEvent<Int32> _rotationEvent;
         
         private Subject<PropertyChangedEvent<Boolean>> _isPlacedObservable;
         
@@ -36,9 +43,24 @@ namespace abgabe {
             }
         }
         
+        public IObservable<PropertyChangedEvent<Int32>> rotationObservable {
+            get {
+                return _rotationObservable ?? (_rotationObservable = new Subject<PropertyChangedEvent<Int32>>());
+            }
+        }
+        
         public IObservable<PropertyChangedEvent<Boolean>> isPlacedObservable {
             get {
                 return _isPlacedObservable ?? (_isPlacedObservable = new Subject<PropertyChangedEvent<Boolean>>());
+            }
+        }
+        
+        public Int32 rotation {
+            get {
+                return _rotation;
+            }
+            set {
+                Setrotation(value);
             }
         }
         
@@ -49,6 +71,10 @@ namespace abgabe {
             set {
                 SetisPlaced(value);
             }
+        }
+        
+        public virtual void Setrotation(Int32 value) {
+            SetProperty(ref _rotation, value, ref _rotationEvent, _rotationObservable);
         }
         
         public virtual void SetisPlaced(Boolean value) {

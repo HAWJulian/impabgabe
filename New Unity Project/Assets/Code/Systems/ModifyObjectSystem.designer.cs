@@ -132,7 +132,29 @@ namespace abgabe {
             RightHandComponentManager = ComponentSystem.RegisterComponent<RightHandComponent>(2);
             LeftHandComponentManager = ComponentSystem.RegisterComponent<LeftHandComponent>(1);
             NewGroupNodeManager = ComponentSystem.RegisterGroup<NewGroupNodeGroup,NewGroupNode>();
+            this.OnEvent<abgabe.RotateObjectEvent>().Subscribe(_=>{ ModifyObjectSystemRotateObjectEventFilter(_); }).DisposeWith(this);
             this.OnEvent<uFrame.ECS.OnTriggerEnterDispatcher>().Subscribe(_=>{ ModifyObjectSystemOnTriggerEnterFilter(_); }).DisposeWith(this);
+            this.OnEvent<abgabe.DeleteObjectEvent>().Subscribe(_=>{ ModifyObjectSystemDeleteObjectEventFilter(_); }).DisposeWith(this);
+        }
+        
+        protected virtual void ModifyObjectSystemRotateObjectEventHandler(abgabe.RotateObjectEvent data, MovableObject group) {
+            var handler = new ModifyObjectSystemRotateObjectEventHandler();
+            handler.System = this;
+            handler.Event = data;
+            handler.Group = group;
+            StartCoroutine(handler.Execute());
+        }
+        
+        protected void ModifyObjectSystemRotateObjectEventFilter(abgabe.RotateObjectEvent data) {
+            var MovableObjectItems = MovableObjectManager.Components;
+            for (var MovableObjectIndex = 0
+            ; MovableObjectIndex < MovableObjectItems.Count; MovableObjectIndex++
+            ) {
+                if (!MovableObjectItems[MovableObjectIndex].Enabled) {
+                    continue;
+                }
+                this.ModifyObjectSystemRotateObjectEventHandler(data, MovableObjectItems[MovableObjectIndex]);
+            }
         }
         
         protected virtual void ModifyObjectSystemOnTriggerEnterHandler(uFrame.ECS.OnTriggerEnterDispatcher data, MenuSelectionComponent collider, MovableObject source) {
@@ -160,6 +182,26 @@ namespace abgabe {
                 return;
             }
             this.ModifyObjectSystemOnTriggerEnterHandler(data, ColliderMenuSelectionComponent, SourceMovableObject);
+        }
+        
+        protected virtual void ModifyObjectSystemDeleteObjectEventHandler(abgabe.DeleteObjectEvent data, MovableObject group) {
+            var handler = new ModifyObjectSystemDeleteObjectEventHandler();
+            handler.System = this;
+            handler.Event = data;
+            handler.Group = group;
+            StartCoroutine(handler.Execute());
+        }
+        
+        protected void ModifyObjectSystemDeleteObjectEventFilter(abgabe.DeleteObjectEvent data) {
+            var MovableObjectItems = MovableObjectManager.Components;
+            for (var MovableObjectIndex = 0
+            ; MovableObjectIndex < MovableObjectItems.Count; MovableObjectIndex++
+            ) {
+                if (!MovableObjectItems[MovableObjectIndex].Enabled) {
+                    continue;
+                }
+                this.ModifyObjectSystemDeleteObjectEventHandler(data, MovableObjectItems[MovableObjectIndex]);
+            }
         }
     }
     

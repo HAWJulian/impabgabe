@@ -78,6 +78,46 @@ namespace abgabe {
         
         private abgabe.UnparentMovableObject PublishEventNode54_Result = default( abgabe.UnparentMovableObject );
         
+        private bool ActionNode79_thumb = default( System.Boolean );
+        
+        private bool BoolNode80 = false;
+        
+        private bool ActionNode79_index = default( System.Boolean );
+        
+        private bool ActionNode79_middle = default( System.Boolean );
+        
+        private bool BoolNode81 = true;
+        
+        private bool ActionNode79_fourth = default( System.Boolean );
+        
+        private bool ActionNode79_fifth = default( System.Boolean );
+        
+        private bool ActionNode79_triggerLeft = default( System.Boolean );
+        
+        private bool ActionNode79_triggerRight = default( System.Boolean );
+        
+        private abgabe.DeleteObjectEvent PublishEventNode82_Result = default( abgabe.DeleteObjectEvent );
+        
+        private bool ActionNode91_thumb = default( System.Boolean );
+        
+        private bool BoolNode92 = false;
+        
+        private bool ActionNode91_index = default( System.Boolean );
+        
+        private bool BoolNode93 = true;
+        
+        private bool ActionNode91_middle = default( System.Boolean );
+        
+        private bool ActionNode91_fourth = default( System.Boolean );
+        
+        private bool ActionNode91_fifth = default( System.Boolean );
+        
+        private bool ActionNode91_triggerLeft = default( System.Boolean );
+        
+        private bool ActionNode91_triggerRight = default( System.Boolean );
+        
+        private abgabe.RotateObjectEvent PublishEventNode94_Result = default( abgabe.RotateObjectEvent );
+        
         public uFrame.Kernel.GameReadyEvent Event {
             get {
                 return _Event;
@@ -133,6 +173,28 @@ namespace abgabe {
             while (this.DebugInfo("463507e8-b78c-4778-b71c-70aeaf9b89a4","fde509c2-7d65-4236-affc-ac408d3c2584", this) == 1) yield return null;
             // Visit GestureUtils.registerUpdatingGesture
             GestureUtils.registerUpdatingGesture(ActionNode51_thumb, ActionNode51_index, ActionNode51_middle, ActionNode51_fourth, ActionNode51_fifth, ()=> { System.StartCoroutine(ActionNode51_action()); }, ActionNode51_triggerLeft, ActionNode51_triggerRight);
+            ActionNode79_thumb = BoolNode80;
+            ActionNode79_index = BoolNode80;
+            ActionNode79_middle = BoolNode81;
+            ActionNode79_fourth = BoolNode80;
+            ActionNode79_fifth = BoolNode80;
+            ActionNode79_triggerLeft = BoolNode81;
+            ActionNode79_triggerRight = BoolNode81;
+            // ActionNode
+            while (this.DebugInfo("a38df202-1cb4-43da-b60f-f3dda82357c4","55689492-bead-4d5d-8a42-5ff2022fa0bc", this) == 1) yield return null;
+            // Visit GestureUtils.registerUpdatingGesture
+            GestureUtils.registerUpdatingGesture(ActionNode79_thumb, ActionNode79_index, ActionNode79_middle, ActionNode79_fourth, ActionNode79_fifth, ()=> { System.StartCoroutine(ActionNode79_action()); }, ActionNode79_triggerLeft, ActionNode79_triggerRight);
+            ActionNode91_thumb = BoolNode92;
+            ActionNode91_index = BoolNode93;
+            ActionNode91_middle = BoolNode92;
+            ActionNode91_fourth = BoolNode92;
+            ActionNode91_fifth = BoolNode93;
+            ActionNode91_triggerLeft = BoolNode93;
+            ActionNode91_triggerRight = BoolNode93;
+            // ActionNode
+            while (this.DebugInfo("a1b47804-2d91-4f68-9628-6d3015d92c53","ec746d50-7dc2-4e13-9f0f-8cb2ab75a555", this) == 1) yield return null;
+            // Visit GestureUtils.registerUpdatingGesture
+            GestureUtils.registerUpdatingGesture(ActionNode91_thumb, ActionNode91_index, ActionNode91_middle, ActionNode91_fourth, ActionNode91_fifth, ()=> { System.StartCoroutine(ActionNode91_action()); }, ActionNode91_triggerLeft, ActionNode91_triggerRight);
             yield break;
         }
         
@@ -160,6 +222,24 @@ namespace abgabe {
             var PublishEventNode54_Event = new UnparentMovableObject();
             System.Publish(PublishEventNode54_Event);
             PublishEventNode54_Result = PublishEventNode54_Event;
+            yield break;
+        }
+        
+        private System.Collections.IEnumerator ActionNode79_action() {
+            // PublishEventNode
+            while (this.DebugInfo("55689492-bead-4d5d-8a42-5ff2022fa0bc","a1b47804-2d91-4f68-9628-6d3015d92c53", this) == 1) yield return null;
+            var PublishEventNode82_Event = new DeleteObjectEvent();
+            System.Publish(PublishEventNode82_Event);
+            PublishEventNode82_Result = PublishEventNode82_Event;
+            yield break;
+        }
+        
+        private System.Collections.IEnumerator ActionNode91_action() {
+            // PublishEventNode
+            while (this.DebugInfo("ec746d50-7dc2-4e13-9f0f-8cb2ab75a555","914ef933-cb2a-46d4-9ef7-6298dc7d7943", this) == 1) yield return null;
+            var PublishEventNode94_Event = new RotateObjectEvent();
+            System.Publish(PublishEventNode94_Event);
+            PublishEventNode94_Result = PublishEventNode94_Event;
             yield break;
         }
     }

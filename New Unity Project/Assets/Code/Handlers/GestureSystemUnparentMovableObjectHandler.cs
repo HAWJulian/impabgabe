@@ -42,9 +42,25 @@ namespace abgabe {
         
         private uFrame.ECS.Entity ActionNode68_entity = default( uFrame.ECS.Entity );
         
-        private UnityEngine.Vector3 ActionNode68_rotation = default( UnityEngine.Vector3 );
+        private int ActionNode89_in = default( System.Int32 );
         
-        private UnityEngine.Vector3 Vector3Node67 = new UnityEngine.Vector3(0f,0f,0f);
+        private int IntNode88 = 0;
+        
+        private float ActionNode89_Result = default( System.Single );
+        
+        private float ActionNode87_x = default( System.Single );
+        
+        private float ActionNode87_y = default( System.Single );
+        
+        private int ActionNode90_in = default( System.Int32 );
+        
+        private float ActionNode90_Result = default( System.Single );
+        
+        private float ActionNode87_z = default( System.Single );
+        
+        private UnityEngine.Vector3 ActionNode87_Result = default( UnityEngine.Vector3 );
+        
+        private UnityEngine.Vector3 ActionNode68_rotation = default( UnityEngine.Vector3 );
         
         private bool BoolNode71 = true;
         
@@ -94,9 +110,26 @@ namespace abgabe {
             while (this.DebugInfo("7b087719-0392-408f-88c7-4f6f8281fa8c","d90d1ba3-2a6b-480d-9ec4-e988c618c308", this) == 1) yield return null;
             Group.gameObject.transform.position = (UnityEngine.Vector3)ActionNode63_Result;
             ActionNode68_entity = Group._Entity;
-            ActionNode68_rotation = Vector3Node67;
+            ActionNode89_in = IntNode88;
             // ActionNode
-            while (this.DebugInfo("d90d1ba3-2a6b-480d-9ec4-e988c618c308","740e42b9-8f47-4950-883c-9e539088c4fb", this) == 1) yield return null;
+            while (this.DebugInfo("d90d1ba3-2a6b-480d-9ec4-e988c618c308","77d285b9-224b-402c-b153-a91366614213", this) == 1) yield return null;
+            // Visit uFrame.Actions.Converter.IntToFloat
+            ActionNode89_Result = uFrame.Actions.Converter.IntToFloat(ActionNode89_in);
+            ActionNode87_x = ActionNode89_Result;
+            ActionNode87_y = ActionNode89_Result;
+            ActionNode90_in = Group.rotation;
+            // ActionNode
+            while (this.DebugInfo("77d285b9-224b-402c-b153-a91366614213","5f0400cc-76eb-4ea6-a6b6-939b8467bdc4", this) == 1) yield return null;
+            // Visit uFrame.Actions.Converter.IntToFloat
+            ActionNode90_Result = uFrame.Actions.Converter.IntToFloat(ActionNode90_in);
+            ActionNode87_z = ActionNode90_Result;
+            // ActionNode
+            while (this.DebugInfo("5f0400cc-76eb-4ea6-a6b6-939b8467bdc4","8e0a4c3f-9d99-4f4a-b199-30466263dabc", this) == 1) yield return null;
+            // Visit uFrame.Actions.Vector3Library.Create
+            ActionNode87_Result = uFrame.Actions.Vector3Library.Create(ActionNode87_x, ActionNode87_y, ActionNode87_z);
+            ActionNode68_rotation = ActionNode87_Result;
+            // ActionNode
+            while (this.DebugInfo("8e0a4c3f-9d99-4f4a-b199-30466263dabc","740e42b9-8f47-4950-883c-9e539088c4fb", this) == 1) yield return null;
             // Visit uFrame.Actions.EntityTransform.SetRotation
             uFrame.Actions.EntityTransform.SetRotation(ActionNode68_entity, ActionNode68_rotation);
             // SetVariableNode
