@@ -20,7 +20,7 @@ namespace abgabe {
     using UnityEngine;
     
     
-    public partial class GestureSystemBase : uFrame.ECS.EcsSystem {
+    public partial class GestureSystemBase : uFrame.ECS.EcsSystem, uFrame.ECS.ISystemUpdate {
         
         private IEcsComponentManagerOf<MovableObject> _MovableObjectManager;
         
@@ -149,6 +149,20 @@ namespace abgabe {
             this.GestureSystemGameReadyHandler(data);
         }
         
+        protected virtual void GestureSystemUpdateHandler() {
+            var handler = new GestureSystemUpdateHandler();
+            handler.System = this;
+            StartCoroutine(handler.Execute());
+        }
+        
+        protected void GestureSystemUpdateFilter() {
+            this.GestureSystemUpdateHandler();
+        }
+        
+        public virtual void SystemUpdate() {
+            GestureSystemUpdateFilter();
+        }
+        
         protected virtual void GestureSystemUnparentMovableObjectHandler(abgabe.UnparentMovableObject data, MovableObject group) {
             var handler = new GestureSystemUnparentMovableObjectHandler();
             handler.System = this;
@@ -197,6 +211,12 @@ namespace abgabe {
         
         private static GestureSystem _Instance;
         
+        [UnityEngine.SerializeField()]
+        private Boolean _rotateTrigger2;
+        
+        [UnityEngine.SerializeField()]
+        private Boolean _rotateTrigger;
+        
         public GestureSystem() {
             Instance = this;
         }
@@ -207,6 +227,24 @@ namespace abgabe {
             }
             set {
                 _Instance = value;
+            }
+        }
+        
+        public Boolean rotateTrigger2 {
+            get {
+                return _rotateTrigger2;
+            }
+            set {
+                _rotateTrigger2 = value;
+            }
+        }
+        
+        public Boolean rotateTrigger {
+            get {
+                return _rotateTrigger;
+            }
+            set {
+                _rotateTrigger = value;
             }
         }
     }

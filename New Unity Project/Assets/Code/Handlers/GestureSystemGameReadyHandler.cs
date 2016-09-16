@@ -98,25 +98,23 @@ namespace abgabe {
         
         private abgabe.DeleteObjectEvent PublishEventNode82_Result = default( abgabe.DeleteObjectEvent );
         
-        private bool ActionNode91_thumb = default( System.Boolean );
+        private object ActionNode105_key = default( System.Object );
         
-        private bool BoolNode92 = false;
+        private int IntNode108 = 0;
         
-        private bool ActionNode91_index = default( System.Boolean );
+        private bool ActionNode105_thumb = default( System.Boolean );
         
-        private bool BoolNode93 = true;
+        private bool BoolNode106 = false;
         
-        private bool ActionNode91_middle = default( System.Boolean );
+        private bool ActionNode105_index = default( System.Boolean );
         
-        private bool ActionNode91_fourth = default( System.Boolean );
+        private bool BoolNode107 = true;
         
-        private bool ActionNode91_fifth = default( System.Boolean );
+        private bool ActionNode105_middle = default( System.Boolean );
         
-        private bool ActionNode91_triggerLeft = default( System.Boolean );
+        private bool ActionNode105_fourth = default( System.Boolean );
         
-        private bool ActionNode91_triggerRight = default( System.Boolean );
-        
-        private abgabe.RotateObjectEvent PublishEventNode94_Result = default( abgabe.RotateObjectEvent );
+        private bool ActionNode105_fifth = default( System.Boolean );
         
         public uFrame.Kernel.GameReadyEvent Event {
             get {
@@ -184,17 +182,16 @@ namespace abgabe {
             while (this.DebugInfo("a38df202-1cb4-43da-b60f-f3dda82357c4","55689492-bead-4d5d-8a42-5ff2022fa0bc", this) == 1) yield return null;
             // Visit GestureUtils.registerUpdatingGesture
             GestureUtils.registerUpdatingGesture(ActionNode79_thumb, ActionNode79_index, ActionNode79_middle, ActionNode79_fourth, ActionNode79_fifth, ()=> { System.StartCoroutine(ActionNode79_action()); }, ActionNode79_triggerLeft, ActionNode79_triggerRight);
-            ActionNode91_thumb = BoolNode92;
-            ActionNode91_index = BoolNode93;
-            ActionNode91_middle = BoolNode92;
-            ActionNode91_fourth = BoolNode92;
-            ActionNode91_fifth = BoolNode93;
-            ActionNode91_triggerLeft = BoolNode93;
-            ActionNode91_triggerRight = BoolNode93;
+            ActionNode105_key = IntNode108;
+            ActionNode105_thumb = BoolNode106;
+            ActionNode105_index = BoolNode107;
+            ActionNode105_middle = BoolNode106;
+            ActionNode105_fourth = BoolNode106;
+            ActionNode105_fifth = BoolNode107;
             // ActionNode
-            while (this.DebugInfo("a1b47804-2d91-4f68-9628-6d3015d92c53","ec746d50-7dc2-4e13-9f0f-8cb2ab75a555", this) == 1) yield return null;
-            // Visit GestureUtils.registerUpdatingGesture
-            GestureUtils.registerUpdatingGesture(ActionNode91_thumb, ActionNode91_index, ActionNode91_middle, ActionNode91_fourth, ActionNode91_fifth, ()=> { System.StartCoroutine(ActionNode91_action()); }, ActionNode91_triggerLeft, ActionNode91_triggerRight);
+            while (this.DebugInfo("a1b47804-2d91-4f68-9628-6d3015d92c53","fefca671-d7ff-4486-bcef-3d1d536a73e6", this) == 1) yield return null;
+            // Visit GestureUtils.registerGesture
+            GestureUtils.registerGesture(ActionNode105_key, ActionNode105_thumb, ActionNode105_index, ActionNode105_middle, ActionNode105_fourth, ActionNode105_fifth);
             yield break;
         }
         
@@ -231,15 +228,6 @@ namespace abgabe {
             var PublishEventNode82_Event = new DeleteObjectEvent();
             System.Publish(PublishEventNode82_Event);
             PublishEventNode82_Result = PublishEventNode82_Event;
-            yield break;
-        }
-        
-        private System.Collections.IEnumerator ActionNode91_action() {
-            // PublishEventNode
-            while (this.DebugInfo("ec746d50-7dc2-4e13-9f0f-8cb2ab75a555","914ef933-cb2a-46d4-9ef7-6298dc7d7943", this) == 1) yield return null;
-            var PublishEventNode94_Event = new RotateObjectEvent();
-            System.Publish(PublishEventNode94_Event);
-            PublishEventNode94_Result = PublishEventNode94_Event;
             yield break;
         }
     }

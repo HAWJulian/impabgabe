@@ -55,7 +55,7 @@ namespace abgabe {
         public virtual System.Collections.IEnumerator Execute() {
             ActionNode84_value = Group.isPlaced;
             // ActionNode
-            while (this.DebugInfo("914ef933-cb2a-46d4-9ef7-6298dc7d7943","c4607311-26af-45d1-aaeb-384cc8a95196", this) == 1) yield return null;
+            while (this.DebugInfo("fefca671-d7ff-4486-bcef-3d1d536a73e6","c4607311-26af-45d1-aaeb-384cc8a95196", this) == 1) yield return null;
             // Visit uFrame.Actions.Comparisons.IsTrue
             uFrame.Actions.Comparisons.IsTrue(ActionNode84_value, ()=> { System.StartCoroutine(ActionNode84_yes()); }, ()=> { System.StartCoroutine(ActionNode84_no()); });
             yield break;

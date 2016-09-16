@@ -1,0 +1,8 @@
+{
+	"Identifier":"e906e54e-7dae-4af8-a5e2-a53e8e1b545a"	, 
+	"Time":"9/16/2016 11:38:29 AM"	, 
+	"Group":113828	, 
+	"DataRecordId":"9935b721-5cfe-4c2d-a18c-b083ea13f932"	, 
+	"Type":0	, 
+	"RecordType":"Invert.Core.GraphDesigner.ConnectionData, Assembly-CSharp-Editor-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"	, 
+	"Data":"{\r\n\t\"OutputIdentifier\":\"0c00ef8c-8c35-4689-b425-f486dcdd346b:GestureSystem.Instance\"\t, \r\n\t\"InputIdentifier\":\"4262164f-b657-439d-aa0d-1948bcb53de0:Object\"\t, \r\n\t\"Identifier\":\"9935b721-5cfe-4c2d-a18c-b083ea13f932\"}\r\n"}

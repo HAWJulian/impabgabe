@@ -1,0 +1,8 @@
+{
+	"Identifier":"423d875f-e42c-4cd8-a400-3870eda84917"	, 
+	"Time":"9/16/2016 11:38:29 AM"	, 
+	"Group":113828	, 
+	"DataRecordId":"aa87199e-7f34-4f78-863b-a06e55915b31"	, 
+	"Type":0	, 
+	"RecordType":"Invert.uFrame.ECS.PropertySelectionValue, Assembly-CSharp-Editor-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"	, 
+	"Data":"{\r\n\t\"Identifier\":\"aa87199e-7f34-4f78-863b-a06e55915b31\"\t, \r\n\t\"NodeId\":\"4262164f-b657-439d-aa0d-1948bcb53de0\"\t, \r\n\t\"ItemId\":\"4262164f-b657-439d-aa0d-1948bcb53de0:Property\"\t, \r\n\t\"ValueId\":\"0c00ef8c-8c35-4689-b425-f486dcdd346b:GestureSystem.Instance.rotateTrigger2\"}\r\n"}
